@@ -14,7 +14,7 @@ class About(models.Model):
         return "About me"
 
 class Service(models.Model):
-    name: models.CharField(max_length=100, verbose_name="Service name")
+    name = models.CharField(max_length=100, verbose_name="Service name", default="Developer")
     description = models.TextField(verbose_name="About service")
 
     def __str__(self):
@@ -27,3 +27,19 @@ class RecentWork(models.Model):
     def __str__(self):
         return self.title
 
+class Client(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Client name")
+    description = models.TextField(verbose_name="Client say")
+    image = models.ImageField(upload_to="clients", default="default.png")
+
+    def __str__(self):
+        return self.name
+
+class Comment(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
