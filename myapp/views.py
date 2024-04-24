@@ -13,3 +13,10 @@ class HomeTemplateView(TemplateView):
         context['works'] = RecentWork.objects.all()
 
         return context
+class ContactTemplateView(TemplateView):
+    template_name = 'contact.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Add any additional context data you need for the contact page
+        return context
